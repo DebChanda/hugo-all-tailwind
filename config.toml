@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://debchanda.github.io/hugo-all-tailwind/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 publishDir = "docs"
@@ -6,6 +6,6 @@ publishDir = "docs"
 [params]
 colorScheme = "avocado"
 [params.colors]
-colorPrimary    = "purple"
-colorSecondary  = "emerald"
-colorNeutral    = "stone"
+colorPrimary    = "rose"
+colorSecondary  = "pink"
+colorNeutral    = "slate"
