@@ -28,4 +28,12 @@
 
     <style>{{ partial "theme.css" . | safeCSS}} </style>
   {{ end }}
+  {{ $mainCSS := resources.Get "css/main.css" }}
+  {{ $mainStyles := $mainCSS | resources.Minify | resources.Fingerprint "sha512" }}
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="{{ $mainStyles.RelPermalink }}"
+    integrity="{{ $mainStyles.Data.Integrity }}"
+  />
 </head>

@@ -6,6 +6,6 @@ publishDir = "docs"
 [params]
 colorScheme = "avocado"
 [params.colors]
-colorPrimary    = "rose"
+colorPrimary    = "emerald"
 colorSecondary  = "pink"
-colorNeutral    = "slate"
+colorNeutral    = "zinc"
