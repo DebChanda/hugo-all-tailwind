@@ -1,0 +1,31 @@
+<head>
+  {{ $colPrimary := resources.Get (printf "css/colors/%s.css" (.Site.Params.colors.colorPrimary)) }}
+  {{ $colSecondary := resources.Get (printf "css/colors/%s.css" (.Site.Params.colors.colorSecondary)) }}
+  {{ $colNeutral := resources.Get (printf "css/colors/%s.css" (.Site.Params.colors.colorNeutral)) }}
+
+  {{ if not (and (and $colPrimary $colSecondary) $colNeutral)}}
+    {{/*  Load default schemes here  */}}
+    {{ $schemeCSS := resources.Get (printf "css/schemes/%s.css" (.Site.Params.colorScheme | default "congo")) }}
+    {{ if not $schemeCSS }}
+      {{ $schemeCSS = resources.Get "css/schemes/congo.css" }}
+    {{ end }}
+    {{ $schemeStyles := $schemeCSS | resources.Minify | resources.Fingerprint "sha512" }}
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{ $schemeStyles.RelPermalink }}"
+      integrity="{{ $schemeStyles.Data.Integrity }}"
+    />
+  {{ else }}
+    {{/*  Load the color css files and link them*/}}
+    {{ $colorcodesPrimary := $colPrimary | resources.Minify | resources.Fingerprint "sha512" }}
+    {{ $colorcodesSecondary := $colSecondary | resources.Minify | resources.Fingerprint "sha512" }}
+    {{ $colorcodesNeutral := $colNeutral | resources.Minify | resources.Fingerprint "sha512" }}
+    
+    <link type="text/css" rel="stylesheet" href="{{ $colorcodesPrimary.RelPermalink }}" integrity="{{ $colorcodesPrimary.Data.Integrity }}" />
+    <link type="text/css" rel="stylesheet" href="{{ $colorcodesSecondary.RelPermalink }}" integrity="{{ $colorcodesSecondary.Data.Integrity }}" />
+    <link type="text/css" rel="stylesheet" href="{{ $colorcodesNeutral.RelPermalink }}" integrity="{{ $colorcodesNeutral.Data.Integrity }}" />
+
+    <style>{{ partial "theme.css" . | safeCSS}} </style>
+  {{ end }}
+</head>
