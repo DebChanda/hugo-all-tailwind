@@ -1,0 +1,36 @@
+{
+  "name": "hugo-tailwind-all",
+  "version": "0.0.1",
+  "description": "A small hugo theme to demonstrate how to use all named colors of tailwindcss",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind-dev": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css --watch",
+    "tailwind-build": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css",
+    "build": "rm -rf docs && hugo"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DebChanda/hugo-all-tailwind.git"
+  },
+  "keywords": [
+    "hugo;",
+    "tailwind"
+  ],
+  "author": "Debojit Chanda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DebChanda/hugo-all-tailwind/issues"
+  },
+  "homepage": "https://github.com/DebChanda/hugo-all-tailwind",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.0",
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.15"
+  }
+}
